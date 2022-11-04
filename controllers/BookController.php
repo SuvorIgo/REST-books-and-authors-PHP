@@ -116,10 +116,13 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
 
+    
     public function actionOutputBooks($id){
-        return $this->render('output-books', [
-            'model' => $this->findModel($id),
-        ]);
+        $query = Book::find();
+
+        $books = $query->all();
+
+        return $this->render('output-books', ['books' => $books]);
     }
     /**
      * Finds the Book model based on its primary key value.
