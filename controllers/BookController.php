@@ -117,7 +117,7 @@ class BookController extends Controller
     }
 
     
-    public function actionOutputBooks($id){
+    public function actionOutputBooks(){
         $query = Book::find();
 
         $books = $query->all();
