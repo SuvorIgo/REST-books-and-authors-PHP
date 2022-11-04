@@ -5,7 +5,7 @@ use yii\helpers\Html;
 <ul>
     <?php foreach ($books as $book) : ?>
         <li>
-            <? Html::encode("{$book->id} ({$country->name})") ?> :
+            <? Html::encode("{$book->id} ({$book->name})") ?> :
             <? $book->numberOfPages ?>
         </li>
     <?php endforeach; ?>
