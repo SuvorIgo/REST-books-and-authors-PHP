@@ -116,7 +116,7 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionOutputBooks(){
+    public function actionOutputBooks($id){
         return $this->render('output-books', [
             'model' => $this->findModel($id),
         ]);
