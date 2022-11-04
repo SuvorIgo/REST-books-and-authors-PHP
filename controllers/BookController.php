@@ -116,6 +116,11 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionOutputBooks(){
+        return $this->render('output-books', [
+            'model' => $this->findModel($id),
+        ]);
+    }
     /**
      * Finds the Book model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
