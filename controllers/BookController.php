@@ -121,7 +121,7 @@ class BookController extends Controller
         $query = Book::find();
 
         $books = $query
-            ->indexBy('id');
+            ->indexBy('id')
             ->all();
 
         return $this->render('output-books', ['books' => $books]);
