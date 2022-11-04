@@ -120,7 +120,9 @@ class BookController extends Controller
     public function actionOutputBooks(){
         $query = Book::find();
 
-        $books = $query->all();
+        $books = $query
+            ->indexBy('id');
+            ->all();
 
         return $this->render('output-books', ['books' => $books]);
     }
