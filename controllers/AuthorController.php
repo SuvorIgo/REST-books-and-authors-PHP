@@ -135,6 +135,13 @@ class AuthorController extends Controller
         return $this->render('index', ['model' => $model]);
     }
 
+    public function actionViewAuthorsAndBooks()
+    {
+        $model = Author::find()->books();
+
+        return $this->render('view-authors-books', ['model' => $model]);
+            
+    }
     /**
      * Finds the Author model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
