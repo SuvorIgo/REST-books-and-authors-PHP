@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Author;
+use app\models\Book;
 use app\models\AthorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -116,14 +117,21 @@ class AuthorController extends Controller
         return $this->redirect(['index']);
     }
 
+    /**
+     * Displays the author with the number of books
+     * @return string
+     */
     public function actionOutputNumberBooks()
     {
+        //$sql = "SELECT nickname as 'ok', COUNT(*) as 'oute' FROM Author, Book WHERE Author.id = Book.id_author GROUP BY Author.id";
+        //$model = Author::findBySql($sql)->all();
+
         $model = Author::find()
-            ->select('Author.*')
-            ->leftJoin('Book', 'Book'.'id_author' = 'Author'.'id')
-            ->with('Book')
-            ->all();
-        
+            ->select('nickname', COUNT('*'))
+            ->from('Author', 'Book')
+            ->where("'Author.'id' = 'Book'.'id_author'")
+            ->groupby("'Author'.'id'")
+            ->all()
         return $this->render('output-number-books', ['model' => $model]);
     }
 
