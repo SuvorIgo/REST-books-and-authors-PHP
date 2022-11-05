@@ -131,15 +131,15 @@ class AuthorController extends Controller
             ->from('Author', 'Book')
             ->where("'Author.'id' = 'Book'.'id_author'")
             ->groupby("'Author'.'id'")
-            ->all()
+            ->all();
         return $this->render('index', ['model' => $model]);
     }
 
-    public function actionViewAuthorsAndBooks()
+    public function actionViewAuthorsBooks()
     {
-        $model = Author::find()->joinWith('book')->all();
+        $model = Author::find()->joinWith('books')->all();
 
-        return $this->render('view-authors-books', ['model' => $model]);
+        return $this->render('view-authors-books', ['books' => $model->$books, 'model' => $model]);
             
     }
     /**
