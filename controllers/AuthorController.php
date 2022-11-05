@@ -132,7 +132,7 @@ class AuthorController extends Controller
             ->where("'Author.'id' = 'Book'.'id_author'")
             ->groupby("'Author'.'id'")
             ->all()
-        return $this->render('output-number-books', ['model' => $model]);
+        return $this->render('index', ['model' => $model]);
     }
 
     /**
