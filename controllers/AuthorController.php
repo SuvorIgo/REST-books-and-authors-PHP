@@ -116,6 +116,17 @@ class AuthorController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionOutputNumberBooks()
+    {
+        $model = Author::find()
+            ->select('Author.*')
+            ->leftJoin('Book', 'Book'.'id_author' = 'Author'.'id')
+            ->with('Book')
+            ->all();
+        
+        return $this->render('output-number-books', ['model' => $model]);
+    }
+
     /**
      * Finds the Author model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
