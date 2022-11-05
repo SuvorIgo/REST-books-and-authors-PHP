@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Book;
 use app\models\BookSearch;
+use app\models\Author;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -116,15 +117,17 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
 
-    
-    public function actionOutputBooks(){
-        $query = Book::find();
 
-        $books = $query
-            ->indexBy('id')
-            ->all();
+    public function actionOutputBooks($id = NULL){
+        $author = Author::findOne($id);
+        $books = Book::find();
 
-        return $this->render('output-books', ['books' => $books]);
+        $books = $author->books;
+
+        return $this->render('output-books', [
+            'author' => $author,
+            'books' => $books
+        ]);
     }
     /**
      * Finds the Book model based on its primary key value.
