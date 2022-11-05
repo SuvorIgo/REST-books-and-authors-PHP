@@ -117,17 +117,29 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
 
-
     public function actionOutputBooks($id = NULL){
         $author = Author::findOne($id);
         $books = Book::find();
 
-        $books = $author->books;
+        if ($id === NULL)
+        {
+            $authors = Author::find()->all();
+            $books = $authors->books;
 
-        return $this->render('output-books', [
-            'author' => $author,
-            'books' => $books
-        ]);
+            return $this->render('output-books', [
+                'authors' => $authors,
+                'books' => $books
+            ]);
+        }
+        else
+        {
+            $books = $author->books;
+
+            return $this->render('output-books', [
+                'author' => $author,
+                'books' => $books
+            ]);
+        }
     }
     /**
      * Finds the Book model based on its primary key value.
