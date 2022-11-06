@@ -137,9 +137,12 @@ class AuthorController extends Controller
 
     public function actionViewAuthorsBooks()
     {
-        $model = Author::find()->joinWith('books')->all();
+        //$model = Author::find()->joinWith('books')->all();
+        $authors = Author::find()->all();
 
-        return $this->render('view-authors-books', ['books' => $model->$books, 'model' => $model]);
+        return $this->render('view-authors-books', ['authors' => $authors]);
+
+        //return $this->render('view-authors-books', ['model' => $model]);
             
     }
     /**

@@ -31,7 +31,7 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_author', 'name', 'numberOfPages'], 'required'],
+            [['id_author', 'bname', 'numberOfPages'], 'required'],
             [['id_author', 'numberOfPages'], 'integer'],
             [['name'], 'string', 'max' => 300],
             [['id_author'], 'exist', 'skipOnError' => true, 'targetClass' => Author::class, 'targetAttribute' => ['id_author' => 'id']],
@@ -46,7 +46,7 @@ class Book extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_author' => 'Id Author',
-            'name' => 'Name',
+            'bname' => 'bName',
             'numberOfPages' => 'Number Of Pages',
         ];
     }
