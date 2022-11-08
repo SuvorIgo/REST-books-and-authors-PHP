@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Author;
 use app\models\Book;
+use app\models\BookSearch;
 use app\models\AthorSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
