@@ -138,6 +138,9 @@ class AuthorController extends Controller
      */
     public function actionViewAuthorsBooks()
     {
+        $count = Author::find()
+            ->count();
+
         $authors = Author::find()
             ->with('books')
             ->limit($count)
