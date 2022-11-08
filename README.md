@@ -1,7 +1,9 @@
 # Тестовое задание для PHP-разработчика
 
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SuvorIgo/REST-books-and-authors-PHP">
-<img alt="Relative date" src="https://img.shields.io/date/1667928767">
+<div align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/SuvorIgo/REST-books-and-authors-PHP">
+  <img alt="Relative date" src="https://img.shields.io/date/1667928767">
+</div>
 
 ![Yii2-basic](https://i1.wp.com/bologer.ru/wp-content/uploads/2017/06/yii2-scenarios.jpg)
 
