@@ -5,21 +5,17 @@ use yii\helpers\Html;
 <?php foreach($authors as $author) :?>
 <p>
     <?php
-        $author = $author->nickname;
-        $books = $author->books;
-        /*$books = $item->$books;
-        echo $item->name;
-        foreach($books as $book)
+        if($author->nickname) echo $author->nickname.' => <br>';
+        else 
         {
-            echo $book->name;
-        }*/
-
-        echo $author.' => ';
-        foreach($books as $book)
-        {
-            echo $book->bname;
+            $surname = $author->surname;
+            echo $surname.' => <br>';
         }
-
+        
+        foreach($books as $book)
+        {
+            echo $book->bname.'<br>';
+        }
     ?>
 </p>
 <?php endforeach; ?>

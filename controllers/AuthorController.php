@@ -119,13 +119,10 @@ class AuthorController extends Controller
 
     /**
      * Displays the author with the number of books
-     * @return string
+     * @return array
      */
     public function actionOutputNumberBooks()
     {
-        //$sql = "SELECT nickname as 'ok', COUNT(*) as 'oute' FROM Author, Book WHERE Author.id = Book.id_author GROUP BY Author.id";
-        //$model = Author::findBySql($sql)->all();
-
         $model = Author::find()
             ->select('nickname', COUNT('*'))
             ->from('Author', 'Book')
@@ -135,15 +132,23 @@ class AuthorController extends Controller
         return $this->render('index', ['model' => $model]);
     }
 
+    /**
+     * Displays the author with the books
+     * @return array
+     */
     public function actionViewAuthorsBooks()
     {
-        //$model = Author::find()->joinWith('books')->all();
-        $authors = Author::find()->all();
+        $authors = Author::find()
+            ->with('books')
+            ->limit($count)
+            ->all();
 
-        return $this->render('view-authors-books', ['authors' => $authors]);
+        foreach ($authors as $author)
+        {
+            $books = $author->books;
+        }
 
-        //return $this->render('view-authors-books', ['model' => $model]);
-            
+        return $this->render('view-authors-books', ['authors' => $authors, 'books' => $books]);
     }
     /**
      * Finds the Author model based on its primary key value.
