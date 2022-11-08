@@ -60,4 +60,10 @@ class Author extends ActiveRecord
     {
         return $this->hasMany(Book::class, ['id_author' => 'id']);
     }
+
+    public function getAuthorBooks()
+    {
+        return $this->hasMany(Book::class, ['id_author' => 'id'])
+            ->via('authorBooks');
+    }
 }
